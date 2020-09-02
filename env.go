@@ -1,4 +1,4 @@
-package rithenv
+package environment
 
 import (
 	"strconv"
@@ -6,7 +6,7 @@ import (
 )
 
 // GetInt get int value from system environment variable
-func GetInt(key string, def int) int  {
+func GetInt(key string, def int) int {
 	v, found := syscall.Getenv(key)
 	if value, err := strconv.Atoi(v); err == nil && found {
 		return value
@@ -14,8 +14,9 @@ func GetInt(key string, def int) int  {
 
 	return def
 }
+
 // GetString get string value from system environment variable
-func GetString(key string, def string) string  {
+func GetString(key string, def string) string {
 	if v, found := syscall.Getenv(key); found {
 		return v
 	}
@@ -24,7 +25,7 @@ func GetString(key string, def string) string  {
 }
 
 // GetBoolean get boolean value from system environment variable
-func GetBoolean(key string, def bool) bool  {
+func GetBoolean(key string, def bool) bool {
 	if v, found := syscall.Getenv(key); found {
 		if value, err := strconv.ParseBool(v); err == nil && found {
 			return value
@@ -33,4 +34,3 @@ func GetBoolean(key string, def bool) bool  {
 
 	return def
 }
-
